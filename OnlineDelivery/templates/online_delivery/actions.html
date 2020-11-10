@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-Actions
-</body>
-</html>
+ <div class="row">
+        <div class="col-md-6">
+            <div class="card card-body">
+                    <form method="POST" action="">
+                    {% csrf_token %}
+                    {{ form }}
+                    <input class="btn btn-success" type="submit" name="Submit">
+                    </form>
+            </div>
+        </div>
+    </div>
