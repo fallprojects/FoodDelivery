@@ -1,4 +1,6 @@
-from django.shortcuts import render
+import form as form
+from django.shortcuts import render, redirect
+from .forms import OrdersForm
 from .models import *
 
 
@@ -27,3 +29,16 @@ def action_page(request):
     actions = Actions.objects.all()
     context = {'action_page': actions}
     return render(request,'online_delivery/actions.html',context)
+
+
+def purchase(request,pk):
+    order = Products.objects.get(id=pk)
+    form = OrdersForm()
+    if request.method == 'POST':
+        form = OrdersForm(request.POST,instance=order)
+        if form.is_valid():
+            form.save()
+    context = {'form':form,'order':order}
+    return render(request,'online_delivery/purchase.html',context)
+
+
