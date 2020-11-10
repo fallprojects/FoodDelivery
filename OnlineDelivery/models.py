@@ -16,7 +16,6 @@ class Products(models.Model):
     date_created = models.DateTimeField(auto_now_add=True,null=True)
 
 
-
     def __str__(self):
         return self.name
 
@@ -34,3 +33,10 @@ class Actions(models.Model):
 
 class Comments(models.Model):
     pass
+
+
+
+class Orders(models.Model):
+    product = models.ForeignKey(Products,null=True,on_delete=models.SET_NULL)
+    date_created = models.DateTimeField(auto_now_add=True,null=True)
+
