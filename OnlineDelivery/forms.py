@@ -1,9 +1,9 @@
 from django.forms import ModelForm
-from .models import Orders
+from .models import Complect
 
 
 
-class OrdersForm(ModelForm):
+class ComplectForm(ModelForm):
     class Meta:
-        model = Orders
+        model = Complect
         fields = '__all__'
