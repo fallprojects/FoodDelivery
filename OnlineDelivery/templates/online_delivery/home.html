@@ -1,0 +1,81 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>My Site</title>#}
+{#</head>#}
+{#<body>#}
+{#<a href="{% url 'products' %}">Products</a>#}
+{#<a href="{% url 'actions' %}">Actions</a>#}
+{#<a href="{% url 'contacts' %}">Contacts</a>#}
+{#<a href="{% url 'comments' %}">Comments</a>#}
+{##}
+{#</body>#}
+{#</html>#}
+<!doctype html> <!-- Допускается любой регистр -->
+<html lang="en"> <!-- Для русскоязычных сайтов lang="ru" -->
+<head>
+  <meta charset="utf-8"> <!-- Объявляет кодировку страницы -->
+  <title>Стартовый шаблон HTML5</title>  <!-- Название страницы -->
+  <meta name="description" content="Документ построен на HTML5"> <!-- Описание страницы -->
+  <meta name="author" content="SiteY">
+  <link rel="stylesheet" href="css/styles.css"> <!-- Путь к пользовательской папке с файлом -->
+  <link rel="stylesheet" href="https://...../bootstrap.min.css"><!-- Абсолютный путь к внешнему файлу -->
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><!-- Для капризов IE 9 -->
+  <![endif]-->
+</head>
+<body>
+<!-- Шапка - заголовок страницы -->
+<header>
+<a href="{% url 'products' %}">Products</a>
+<a href="{% url 'actions' %}">Actions</a>
+<a href="{% url 'contacts' %}">Contacts</a>
+<a href="{% url 'comments' %}">Comments</a> <!-- Навигация -->
+<nav class="">
+<div class="menu">
+Меню сайта
+</div>
+</nav>
+<!-- Слайдер-->
+<div class="carousel">
+Слайдер
+</div>
+</header>
+<!-- Конец Шапка -->
+
+<!-- Тело страницы -->
+<main>
+   <section id="1">
+
+      <section id="1.1">
+         <article>
+            Часть секции 1
+         </article>
+      </section>
+
+      <section id="1.2">
+         <article>
+            Часть секции 2
+         </article>
+      </section>
+
+   </section>
+</main>
+<!-- Конец тела страницы -->
+
+<div class="aside">
+Дополнительная колонка SideBar
+</div>
+<!-- Footer -->
+<footer class="">
+<div class="">
+<p class=""> Copyright &copy;  2019</p>
+</div>
+</footer>
+<script src="js/js.js"></script> <!-- Путь к папке со скриптом -->
+<script>
+Вставка для скрипта
+</script>
+</body>
+</html>
