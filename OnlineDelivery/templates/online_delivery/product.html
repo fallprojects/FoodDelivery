@@ -13,7 +13,7 @@ PRODUCT PAGE
     <th>Description</th>
     <th>Price</th>
 </tr>
-    {% for product in products %}
+    {% for product in hookahs %}
         <tr>
             <td>{{ product.name }}</td>
             <td>{{ product.category }}</td>
@@ -21,6 +21,54 @@ PRODUCT PAGE
             <td>{{ product.price }}</td>
         </tr>
     {% endfor %}
-</table>>
+</table>
+<table class="table">
+<tr>
+    <th>Product</th>
+    <th>Category</th>
+    <th>Description</th>
+    <th>Price</th>
+</tr>
+    {% for product in bowls %}
+        <tr>
+            <td>{{ product.name }}</td>
+            <td>{{ product.category }}</td>
+            <td>{{ product.decsription }}</td>
+            <td>{{ product.price }}</td>
+        </tr>
+    {% endfor %}
+</table>
+<table class="table">
+<tr>
+    <th>Product</th>
+    <th>Category</th>
+    <th>Description</th>
+    <th>Price</th>
+</tr>
+    {% for product in tabacco %}
+        <tr>
+            <td>{{ product.name }}</td>
+            <td>{{ product.category }}</td>
+            <td>{{ product.decsription }}</td>
+            <td>{{ product.price }}</td>
+        </tr>
+    {% endfor %}
+</table>
+<table class="table">
+<tr>
+    <th>Product</th>
+    <th>Category</th>
+    <th>Description</th>
+    <th>Price</th>
+</tr>
+    {% for product in coals %}
+        <tr>
+            <td>{{ product.name }}</td>
+            <td>{{ product.category }}</td>
+            <td>{{ product.decsription }}</td>
+            <td>{{ product.price }}</td>
+        </tr>
+    {% endfor %}
+</table>
 </body>
 </html>
