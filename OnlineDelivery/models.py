@@ -2,23 +2,48 @@ from django.contrib.auth.models import User
 from django.db import models
 
 
-class Products(models.Model):
-    CATEGORY = (
-        ('Кальян','Кальян'),
-        ('Табак','Табак'),
-        ('Чаша','Чаша'),
-        ('Угли','Угли'),
-    )
+class Hookah(models.Model):
+    category = models.CharField(max_length=50,null=True)
     name = models.CharField(max_length=50,null=True)
     price = models.FloatField(null=True)
-    category = models.CharField(max_length=50,null=True,choices=CATEGORY)
     decsription = models.CharField(max_length=50,null=True,blank=True)
-    date_created = models.DateTimeField(auto_now_add=True,null=True)
-
 
     def __str__(self):
         return self.name
 
+class Bowl(models.Model):
+    category = models.CharField(max_length=50, null=True)
+    name = models.CharField(max_length=50,null=True)
+    price = models.FloatField(null=True)
+    decsription = models.CharField(max_length=50,null=True,blank=True)
+
+    def __str__(self):
+        return self.name
+
+class Tabacco(models.Model):
+    category = models.CharField(max_length=50, null=True)
+    name = models.CharField(max_length=50,null=True)
+    price = models.FloatField(null=True)
+    decsription = models.CharField(max_length=50,null=True,blank=True)
+
+    def __str__(self):
+        return self.name
+
+class Coals(models.Model):
+    category = models.CharField(max_length=50, null=True)
+    name = models.CharField(max_length=50,null=True)
+    price = models.FloatField(null=True)
+    decsription = models.CharField(max_length=50,null=True,blank=True)
+
+    def __str__(self):
+        return self.name
+
+
+class Complect(models.Model):
+    hookah = models.ForeignKey(Hookah,null=True,on_delete=models.SET_NULL)
+    bowl = models.ForeignKey(Bowl, null=True, on_delete=models.SET_NULL)
+    tabacco = models.ForeignKey(Tabacco, null=True, on_delete=models.SET_NULL)
+    coals = models.ForeignKey(Coals, null=True, on_delete=models.SET_NULL)
 
 class Adresses(models.Model):
     adress = models.CharField(max_length=200, null=True)
@@ -36,7 +61,4 @@ class Comments(models.Model):
 
 
 
-class Orders(models.Model):
-    product = models.ForeignKey(Products,null=True,on_delete=models.SET_NULL)
-    date_created = models.DateTimeField(auto_now_add=True,null=True)
 
