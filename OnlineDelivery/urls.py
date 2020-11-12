@@ -9,5 +9,5 @@ urlpatterns = [
     path('actions/',action_page,name='actions'),
     path('adresses/',contact_page,name='contacts'),
     path('comments/',comment_page,name='comments'),
-    path('complect/',complect_page,name='complect')
+    path('complect/',complect_page,name='complect'),
 ]
