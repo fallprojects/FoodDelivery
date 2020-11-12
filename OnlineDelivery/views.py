@@ -14,7 +14,16 @@ def products_page(request):
     bowls = Bowl.objects.all()
     tabacco = Tabacco.objects.all()
     coals = Coals.objects.all()
-    context = {'hookahs':hookahs,'bowls':bowls,'tabacco':tabacco,'coals':coals}
+    total_price = 0
+    view = Complect.objects.all()
+    form = ComplectForm()
+    if request.method == 'POST':
+        form = ComplectForm(request.POST)
+        if form.is_valid():
+            for product in view:
+                total_price = product.hookah.price + product.bowl.price + product.tabacco.price + product.coals.price
+            form.save()
+    context = {'hookahs':hookahs,'bowls':bowls,'tabacco':tabacco,'coals':coals,'form':form,'total_price':total_price}
     return render(request,'online_delivery/product.html',context)
 
 
@@ -34,18 +43,14 @@ def action_page(request):
     return render(request,'online_delivery/actions.html',context)
 
 
+
 def complect_page(request):
-    total_price = 0
     view = Complect.objects.all()
-    form = ComplectForm()
-    if request.method == 'POST':
-        form = ComplectForm(request.POST)
-        if form.is_valid():
-            for product in view:
-                total_price = product.hookah.price + product.bowl.price + product.tabacco.price + product.coals.price
-            form.save()
-    context = {'form':form,'view':view,'total_price':total_price}
+    context = {'view':view}
     return render(request,'online_delivery/complect.html',context)
+
+
+
 
 
 
