@@ -3,16 +3,20 @@
             <div class="card card-body">
                             <table>
                             {% for complect in view %}
-                                {{ complect.hookah.name }}
-                                {{ complect.hookah.price }}
-                                {{ complect.bowl.name }}
-                                {{ complect.bowl.price }}
-                                {{ complect.tabacco.name }}
-                                {{ complect.tabacco.price }}
-                                {{ complect.coals.name }}
-                                {{ complect.coals.price }}
+                            <tr>
+                                <td>{{ complect.hookah.name }}
+                                {{ complect.hookah.price }}</td>
+                                <td>{{ complect.bowl.name }}
+                                {{ complect.bowl.price }}</td>
+                                <td>{{ complect.tabacco.name }}
+                                {{ complect.tabacco.price }}</td>
+                                <td>{{ complect.coals.name }}
+                                {{ complect.coals.price }}</td>
+                                <td>{{ complect.price }}</td>
                             {% endfor %}
+                            </tr>
                             </table>
+            </tr>
             </div>
         </div>
     </div>
