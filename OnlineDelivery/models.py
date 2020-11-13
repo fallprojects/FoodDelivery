@@ -46,6 +46,8 @@ class Complect(models.Model):
     bowl = models.ForeignKey(Bowl, null=True, on_delete=models.SET_NULL)
     tabacco = models.ForeignKey(Tabacco, null=True, on_delete=models.SET_NULL)
     coals = models.ForeignKey(Coals, null=True, on_delete=models.SET_NULL)
+    price = models.FloatField(editable=False,null=True,blank=True)
+    sale = models.BooleanField(null=True)
 
 class Adresses(models.Model):
     adress = models.CharField(max_length=200, null=True)
