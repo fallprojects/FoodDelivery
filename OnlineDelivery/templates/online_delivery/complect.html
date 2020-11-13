@@ -1,12 +1,22 @@
  <div class="row">
         <div class="col-md-6">
             <div class="card card-body">
-                        <form method="POST" action="">
-                            {% csrf_token %}
-                            {{ form }}
-                            <input class="btn btn-success" type="submit" name="Submit">
-                            {{ total_price }}
-                        </form>
+                            <table>
+                            {% for complect in view %}
+                            <tr>
+                                <td>{{ complect.hookah.name }}
+                                {{ complect.hookah.price }}</td>
+                                <td>{{ complect.bowl.name }}
+                                {{ complect.bowl.price }}</td>
+                                <td>{{ complect.tabacco.name }}
+                                {{ complect.tabacco.price }}</td>
+                                <td>{{ complect.coals.name }}
+                                {{ complect.coals.price }}</td>
+                                <td>{{ complect.price }}</td>
+                            {% endfor %}
+                            </tr>
+                            </table>
+            </tr>
             </div>
         </div>
     </div>

@@ -14,7 +14,13 @@ def products_page(request):
     bowls = Bowl.objects.all()
     tabacco = Tabacco.objects.all()
     coals = Coals.objects.all()
-    context = {'hookahs':hookahs,'bowls':bowls,'tabacco':tabacco,'coals':coals}
+    form = ComplectForm()
+    if request.method == 'POST':
+        form = ComplectForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('complect')
+    context = {'hookahs':hookahs,'bowls':bowls,'tabacco':tabacco,'coals':coals,'form':form}
     return render(request,'online_delivery/product.html',context)
 
 
@@ -29,23 +35,27 @@ def comment_page(request):
     return render(request,'online_delivery/comments.html',context)
 
 def action_page(request):
-    actions = Actions.objects.all()
+    actions = Complect.objects.all()
+    for product in actions:
+        if product.sale:
+            actions = Complect.objects.get(id=product.id)
     context = {'action_page': actions}
     return render(request,'online_delivery/actions.html',context)
 
 
+
 def complect_page(request):
-    total_price = 0
     view = Complect.objects.all()
-    form = ComplectForm()
-    if request.method == 'POST':
-        form = ComplectForm(request.POST)
-        if form.is_valid():
-            for product in view:
-                total_price = product.hookah.price + product.bowl.price + product.tabacco.price + product.coals.price
-            form.save()
-    context = {'form':form,'view':view,'total_price':total_price}
+    for product in view:
+        product.price = product.hookah.price + product.tabacco.price + product.coals.price + product.bowl.price
+        if product.sale:
+            product.price = product.price - (0.2*product.price)
+            return redirect('actions')
+    context = {'view':view,}
     return render(request,'online_delivery/complect.html',context)
+
+
+
 
 
 

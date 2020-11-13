@@ -70,5 +70,12 @@ PRODUCT PAGE
         </tr>
     {% endfor %}
 </table>
+<form method="POST" action="">
+     {% csrf_token %}
+     {{ form }}
+     {{ total_price }}
+     <input class="btn btn-success" type="submit" name="Submit">
+</form>
+
 </body>
 </html>
