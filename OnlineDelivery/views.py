@@ -35,11 +35,11 @@ def comment_page(request):
     return render(request,'online_delivery/comments.html',context)
 
 def action_page(request):
-    actions = Complect.objects.all()
-    for product in actions:
-        if product.sale:
-            actions = Complect.objects.get(id=product.id)
-    context = {'action_page': actions}
+    sales = Sales.objects.all()
+    for complect in sales:
+        complect.price = complect.complect.hookah.price + complect.complect.tabacco.price + complect.complect.bowl.price + complect.complect.coals.price
+        complect.price = complect.price - complect.price * complect.act // 100
+    context = {'sales': sales}
     return render(request,'online_delivery/actions.html',context)
 
 
@@ -50,7 +50,7 @@ def complect_page(request):
         product.price = product.hookah.price + product.tabacco.price + product.coals.price + product.bowl.price
         if product.sale:
             product.price = product.price - (0.2*product.price)
-            return redirect('actions')
+            # return redirect('actions')
     context = {'view':view,}
     return render(request,'online_delivery/complect.html',context)
 

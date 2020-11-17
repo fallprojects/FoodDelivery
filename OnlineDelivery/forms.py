@@ -7,4 +7,4 @@ class ComplectForm(ModelForm):
     class Meta:
         model = Complect
         fields = '__all__'
-        exclude = ['sale',]
+        exclude = ['sale','price']

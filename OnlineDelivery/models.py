@@ -54,10 +54,11 @@ class Adresses(models.Model):
     phone = models.CharField(max_length=200, null=True)
 
 
-class Actions(models.Model):
-    first = models.CharField(max_length=200, null=True)
-    second = models.CharField(max_length=200, null=True)
-    third = models.CharField(max_length=200, null=True)
+class Sales(models.Model):
+    complect = models.ForeignKey(Complect,on_delete=models.SET_NULL,null=True)
+    act = models.IntegerField(default=0)
+    date_creted = models.DateTimeField(auto_now_add=True)
+    price = models.IntegerField(editable=False,default=0)
 
 
 class Comments(models.Model):

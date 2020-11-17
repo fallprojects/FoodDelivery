@@ -2,12 +2,21 @@
         <div class="col-md-6">
             <div class="card card-body">
                     <form method="POST" action="">
-                    {% csrf_token %}
-                    {{ action_page.hookah.name }}
-                    {{ action_page.tabacco.name }}
-                    {{ action_page.bowl.name }}
-                    {{ action_page.coals.name }}
-                    {{ action_page.sale }}
+                            <table>
+                            {% for complect in sales %}
+                            <tr>
+                                <td>{{ complect.complect.hookah.name }}
+                                {{ complect.complect.hookah.price }}</td>
+                                <td>{{ complect.complect.bowl.name }}
+                                {{ complect.complect.bowl.price }}</td>
+                                <td>{{ complect.complect.tabacco.name }}
+                                {{ complect.complect.tabacco.price }}</td>
+                                <td>{{ complect.complect.coals.name }}
+                                {{ complect.complect.coals.price }}</td>
+                                <td>{{ complect.price }}</td>
+                            {% endfor %}
+                            </tr>
+                            </table>
                     </form>
             </div>
         </div>
